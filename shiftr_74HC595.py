@@ -1,4 +1,4 @@
-import RPi.GPIO as GPIO
+import CHIP_IO.GPIO as GPIO
 
 class ShifRegister:
     register_type = '74HC595'
