@@ -1,0 +1,43 @@
+import CHIP_IO.GPIO as GPIO
+from shiftr_74HC595 import ShiftRegister
+from time import sleep
+
+data_pin = "GPIO1" #pin 14 on the 74HC595
+latch_pin = "GPIO2" #pin 12 on the 74HC595
+clock_pin = "GPIO3" #pin 11 on the 74HC595
+shift_register = ShiftRegister(data_pin, latch_pin, clock_pin)
+
+try:
+    while 1:
+        shift_register.setOutput(0, GPIO.LOW)
+        shift_register.setOutput(1, GPIO.LOW)
+        shift_register.setOutput(2, GPIO.LOW)
+        shift_register.setOutput(3, GPIO.HIGH)
+        shift_register.setOutput(4, GPIO.LOW)
+        shift_register.setOutput(5, GPIO.LOW)
+        shift_register.setOutput(6, GPIO.HIGH)
+        shift_register.setOutput(7, GPIO.HIGH)
+        sleep(1)
+
+        shift_register.setOutput(0, GPIO.LOW)
+        shift_register.setOutput(1, GPIO.LOW)
+        shift_register.setOutput(2, GPIO.HIGH)
+        shift_register.setOutput(3, GPIO.LOW)
+        shift_register.setOutput(4, GPIO.LOW)
+        shift_register.setOutput(5, GPIO.HIGH)
+        shift_register.setOutput(6, GPIO.LOW)
+        shift_register.setOutput(7, GPIO.HIGH)
+        sleep(1)
+except KeyboardInterrupt:
+    print
+    print "Ctrl-C quit"
+finally:
+    shift_register.setOutput(0, GPIO.LOW)
+    shift_register.setOutput(1, GPIO.LOW)
+    shift_register.setOutput(2, GPIO.LOW)
+    shift_register.setOutput(3, GPIO.LOW)
+    shift_register.setOutput(4, GPIO.LOW)
+    shift_register.setOutput(5, GPIO.LOW)
+    shift_register.setOutput(6, GPIO.LOW)
+    shift_register.setOutput(7, GPIO.LOW)
+    GPIO.cleanup()
