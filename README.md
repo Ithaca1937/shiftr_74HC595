@@ -15,10 +15,6 @@ Dynamic class to manage Shift Register 74HC595 with C.H.I.P. using Python
 
         https://github.com/xtacocorex/CHIP_IO.git
 
-    Get this library:
-
-        # git clone git@github.com:Ithaca1937/shiftr_74HC595.git
-
 
 #Example
 
